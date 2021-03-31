@@ -8,130 +8,247 @@
 </head>
 <body>
     <script>
-        // lesson 29.03.2021 [special functions continue]
+		// lesson 31.03.2021
+/*
+let arr = [12, 4, 25, 42, 15, 82, 5, 7, 33, 6]
+        //arr.sort((a, b) => a - b)
+        //---------------- Бульбашкове сортування
+        // let zamina
+        // do {
+        //     zamina = false
+        //     for (let i = 1; i < arr.length; i++) {
+        //         if (arr[i - 1] > arr[i]) {
+        //             let temp = arr[i - 1]
+        //             arr[i - 1] = arr[i]
+        //             arr[i] = temp
+        //             zamina = true
+        //         }
+        //     }
+        // } while (zamina === true);
+        //------- Шейкер сортування
+        // let zamina
+        // do {
+        //     //прямий хід алгоритму (зліва-направо)
+        //     zamina = false
+        //     for (let i = 1; i < arr.length; i++) {
+        //         if (arr[i - 1] > arr[i]) {
+        //             let temp = arr[i - 1]
+        //             arr[i - 1] = arr[i]
+        //             arr[i] = temp
+        //             zamina = true
+        //         }
+        //     }
+        //     if(zamina===false) break
+        //     //зворотній хід алгоритму (справа-наліво)
+        //     zamina = false
+        //     for (let i = arr.length-1; i>=1; i--) {
+        //         if (arr[i - 1] > arr[i]) {
+        //             let temp = arr[i - 1]
+        //             arr[i - 1] = arr[i]
+        //             arr[i] = temp
+        //             zamina = true
+        //         }
+        //     }
+        // } while (zamina === true);
+        //---------------- Уорядкування вибором
+        for (let p = 0; p < arr.length-1; p++) {
+            //Знайти номер мінімального починаючи з "p"
+            let nMin = p
+            for (let i = p+1; i < arr.length; i++) {
+                if(arr[i]<arr[nMin])
+                  nMin=i
+            }
+            //Перевіряємо, чи мінімальний у правильній позиції
+            if(nMin!==p){
+                let temp=arr[p]
+                arr[p]=arr[nMin]
+                arr[nMin]=temp
+            }
+        }
+        document.write(arr)
+*/
 
+
+/*
+let letters = ['ц','ф','а','у','в','ґ','п','г','о','ь','ю','у','п','ц','к','р','е','н','т','о','о']
+        //     0   1   2   3   4
+let vowels = ['а','е','и','о','у','є','ю','я']
+let newArray=letters.filter((val,i,arr)=>vowels.includes(val))
+document.write(newArray)
+*/
+
+/*
+let arr = [12, 4, 25, 42, 15, 82, 5, 7, 33, 6]
+        arr.sort((a, b) => a - b)
+        document.write(arr)
+        document.write('<br>')
+        //Бінарний пошук. Застосовуємо тільки у упорядкованих масивах
+        let s = 0
+        let e = arr.length - 1
+        let ind7 = -1
+        while (s <= e) {
+            let m = Math.floor((s + e) / 2)
+            if (arr[m] === 7) {
+                ind7 = m
+                break
+            }
+            if (arr[m] > 7)
+                e = m - 1
+            else
+                s = m + 1
+        }
+        if (ind7 === -1)
+            document.write('no item')
+        else
+            document.write(ind7)
+*/
+
+/*
+let arr = [2,4,5,2,5,2,5,7,3,6]
+//знайти номер першои 7 в массиви
+// let ind7 = arr.indexOf(7)
+// Застосували лінійний пошук
+let ind7 = -1
+for(i = 0; i < arr.length; i++){
+	if(arr[i] === 7){
+		ind7 = i
+		break
+	}
+}
+if (ind7 == -1)
+document.write(`No item`)
+else
+document.write(`Index=${ind7}`)
+        // lesson 29.03.2021 [special functions continue]
+*/
 
 //////////////////////////////////////////////////// reduce
-let a = [-11,5,40,100,-50,-3]
-// знайти суму елементів більших за 30
-let sum = a.reduce(
-	(prevSum, val, i, arr) => {
-		if (val>30)
-		return prevSum+val
-		else
-		return prevSum
-	},0)
-	document.write(sum)
+// let a = [-11,5,40,100,-50,-3]
+// // знайти суму елементів більших за 30
+// let sum = a.reduce(
+// 	(prevSum, val, i, arr) => {
+// 		if (val>30)
+// 		return prevSum+val
+// 		else
+// 		return prevSum
+// 	},0)
+// 	document.write(sum)
 
-	//Знайти добуток усіх елементів
-	let prod = a.reduce((prevProd, val, i,arr) => {
-		return prevProd * val
-	},1)
-	document.write(`<br>${prod}`)
+// 	//Знайти добуток усіх елементів
+// 	let prod = a.reduce((prevProd, val, i,arr) => {
+// 		return prevProd * val
+// 	},1)
+// 	document.write(`<br>${prod}`)
 
-	//Знайти добуток тільки додатних елементів
+// 	//Знайти добуток тільки додатних елементів
 
-	let prodPos = a.reduce((prevProd, val, i, arr) => {
-		if (val > 0)
-		return prevProd * val
-		else 
-		return prevProd
-	},1)
-	document.write(`<br>${prodPos}`)
+// 	let prodPos = a.reduce((prevProd, val, i, arr) => {
+// 		if (val > 0)
+// 		return prevProd * val
+// 		else 
+// 		return prevProd
+// 	},1)
+// 	document.write(`<br>${prodPos}`)
 
-	//Знайти кількість парних
-	let evenCount = a.reduce((prevCount, val,i,arr) =>{
-		if (val % 2 === 0)
-		return prevCount + 1
-		else 
-		return prevCount
-	},0)
-	document.write(`<br>${evenCount}`)
+// 	//Знайти кількість парних
+// 	let evenCount = a.reduce((prevCount, val,i,arr) =>{
+// 		if (val % 2 === 0)
+// 		return prevCount + 1
+// 		else 
+// 		return prevCount
+// 	},0)
+// 	document.write(`<br>${evenCount}`)
 
-	// знайти найбільший елемент
-	let max = a.reduce((prevMax,val,i,arr) => {
-		if (val > prevMax)
-		return val
-		else 
-		return prevMax
-	})
-	document.write(`<br> ${max}`)
+// 	// знайти найбільший елемент
+// 	let max = a.reduce((prevMax,val,i,arr) => {
+// 		if (val > prevMax)
+// 		return val
+// 		else 
+// 		return prevMax
+// 	})
+// 	document.write(`<br> ${max}`)
 
-	// знайти кількість пенсіонерів (дано масив з віком)
-	let pensionerCount = a.reduce((prevCount,val,i,arr) => {
-		if (val >= 65)
-		return prevCount + 1
-		else
-		return prevCount 
-	},0)
-	document.write(`<br>Кількість пенсіонерів: ${pensionerCount}`)
+// 	// знайти кількість пенсіонерів (дано масив з віком)
+// 	let pensionerCount = a.reduce((prevCount,val,i,arr) => {
+// 		if (val >= 65)
+// 		return prevCount + 1
+// 		else
+// 		return prevCount 
+// 	},0)
+// 	document.write(`<br>Кількість пенсіонерів: ${pensionerCount}`)
 
-	// Знайти суму тих елементів, які є меншими за наступні елементи
-	let sum2 = a.reduceRight((prevSum,val,i,arr) => {
-		if (val < arr[i+1])
-		return prevSum + val
-		else
-		return prevSum						
-	}) 
-	document.write(`<br> ${sum2}`)
+// 	// Знайти суму тих елементів, які є меншими за наступні елементи
+// 	let sum2 = a.reduceRight((prevSum,val,i,arr) => {
+// 		if (val < arr[i+1])
+// 		return prevSum + val
+// 		else
+// 		return prevSum						
+// 	}) 
+// 	document.write(`<br> ${sum2}`)
 
-	// Підрахувати кількість імен. які закінчуються на літеру "а".
-	let names = ['alla', 'Petro', 'Olga','Ivan','Anna']
-	let namesCount = names.reduce((prevSum, val, i, arr) => {
-		if(val [val.length - 1] == 'a')
-		return prevSum + 1
-		else
-		return prevSum
-	},0)
-	document.write(`<br> ${namesCount}`)
+// 	// Підрахувати кількість імен. які закінчуються на літеру "а".
+// 	let names = ['alla', 'Petro', 'Olga','Ivan','Anna']
+// 	let namesCount = names.reduce((prevSum, val, i, arr) => {
+// 		if(val [val.length - 1] == 'a')
+// 		return prevSum + 1
+// 		else
+// 		return prevSum
+// 	},0)
+// 	document.write(`<br> ${namesCount}`)
 	    
-	/////////////////////////////////////////////////////   Sort
+// 	/////////////////////////////////////////////////////   Sort
 
-	/*
-	a - b = 0   // a == b
-	a - b > 0   // a > b
-	a - b < 0   // a < b
-	*/
+// 	/*
+// 	a - b = 0   // a == b
+// 	a - b > 0   // a > b
+// 	a - b < 0   // a < b
+// 	*/
 
-	//Упорядкувати за зростанням
+// 	//Упорядкувати за зростанням
 
-	a.sort((item1, item2) => {
-		return item1 - item2						// if(item1 > item2) return 1
-													// if(item1 < item2) return -1
-													// else return 0
-	})
-	document.write(`<br>${a}`)
+// 	a.sort((item1, item2) => {
+// 		return item1 - item2						// if(item1 > item2) return 1
+// 													// if(item1 < item2) return -1
+// 													// else return 0
+// 	})
+// 	document.write(`<br>${a}`)
 
-	//Упорядкувати за спаданням
-	a.sort((item1, item2) => {
-		return item2 - item1
-	})
-	document.write(`<br>${a}`)
+// 	//Упорядкувати за спаданням
+// 	a.sort((item1, item2) => {
+// 		return item2 - item1
+// 	})
+// 	document.write(`<br>${a}`)
 
-	// Дано массив імен. упорядкувати у алфавітному порядку.
+// 	// Дано массив імен. упорядкувати у алфавітному порядку.
 
-	let namesArr = ['Sidor', 'Alla', 'Vova', 'Ben', 'Alina', 'Anna', 'Cidor',]
-	document.write(`<br>${namesArr}`)
-	namesArr.sort((name1,name2) => {
-		if(name1 > name2) return 1
-		if(name1 < name2) return -1
-		else return 0
-	})
-	document.write(`<br> ${namesArr}`)
-
-
+// 	let namesArr = ['Sidor', 'Alla', 'Vova', 'Ben', 'Alina', 'Anna', 'Cidor',]
+// 	document.write(`<br>${namesArr}`)
+// 	namesArr.sort((name1,name2) => {
+// 		if(name1 > name2) return 1
+// 		if(name1 < name2) return -1
+// 		else return 0
+// 	})
+// 	document.write(`<br> ${namesArr}`)
 
 
-	// Сформувати массив індексів, де знаходяться елементи "11"
-	let aArr = [2,11,45,23,7,11,54,11,6]
-	document.write(`<br>${aArr}`)
-	let res = aArr.reduce((prevArr11,val,i,arr) =>{
-		if(val===11)
-		return[...prevArr11,i]
-		else 
-		return prevArr11
-	},[])
-	document.write(`<br>${res}`)
+
+
+// 	// Сформувати массив індексів, де знаходяться елементи "11"
+// 	let aArr = [2,11,45,23,7,11,54,11,6]
+// 	document.write(`<br>${aArr}`)
+// 	let res = aArr.reduce((prevArr11,val,i,arr) =>{
+// 		if(val===11)
+// 		return[...prevArr11,i]
+// 		else 
+// 		return prevArr11
+// 	},[])
+// 	document.write(`<br>${res}`)
+
+
+
+
+
+
 
 // Lesson 24.03.2021 [special function]
 
