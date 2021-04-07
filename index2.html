@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script>
+		function getSum() {
+            const inp1 = document.querySelector('#num1')
+            const n1 = parseFloat(inp1.value)
+            const inp2 = document.querySelector('#num2')
+            const n2 = parseFloat(inp2.value)
+            const s = n1 + n2
+            // const resInp=document.querySelector('#res')
+            // resInp.value=s
+            document.querySelector('#res').value = s
+
+
+        // setTimeout( ()=>{document.write('Hello')} ,1000)
+    </script>
+</head>
+<body>
+	/ const myInterval = setInterval(() => {
+        //     document.write('Hello')
+        // }, 1000);
+        // setTimeout(() => {
+        //     clearInterval(myInterval)
+        // }, 5000);
+        function f() {
+            document.write('Hello')
+            setTimeout(() => {
+                f()
+            }, 1000);
+        }
+
+
+		<label>
+			First number
+		   <input type="number" id="num1" value="11"/>
+		</label> <br>
+		<label>
+			Second number
+		   <input type="number" id="num2" value="22"/>
+		</label> <br>
+		<button id="myBtn">
+			Click
+		</button> <br>
+		<label>
+			Summ
+		   <input type="number" id="res" value=""/>
+		</label> <br>
+	<!-- <div>
+		<p class="info">11</p>
+		<p>22</p>
+		<p>33</p>
+		<p class="info">44</p>
+		<p>55</p>
+	</div> -->
+	<hr>
+
+	<label>
+        First number
+        <input type="number" id="num1" value="11" />
+    </label> <br>
+    <label>
+        Second number
+        <input type="number" id="num2" value="22" />
+    </label> <br>
+    <button id="myBtn" onclick="getSum()">
+        Add
+    </button> <br>
+    <label>
+        Summ
+        <input type="number" id="res" value="" />
+    </label> <br>
+	
+
+
+
+	<script>
+        //--------- Id
+        // const b1 = document.getElementById('myBtn')
+        // setTimeout(() => {
+        //     b1.innerText=' <strong> Ok </strong> '
+        //     // b1.innerHTML=' <strong> Ok </strong> '
+        // }, 1000);
+        //------------ class
+        // const pList=document.getElementsByClassName('info')
+        // // for (let i = 0; i < pList.length; i++) {           
+        // //     pList[i].innerText='Okkkk'
+        // // }
+        // for (const el of pList) {
+        //     el.innerText='Okkkk'
+        // }
+        //------------- TagName
+        // const pList=document.getElementsByTagName('p')
+        // // // for (let i = 0; i < pList.length; i++) {           
+        // // //     pList[i].innerText='Okkkk'
+        // // // }
+        // for (const el of pList) {
+        //     el.innerText='Okkkk'
+        // }
+        // console.log(pList); 
+        //--------------  querySelectorAll
+        // const pList=document.querySelectorAll('.info')
+        // // // for (let i = 0; i < pList.length; i++) {           
+        // // //     pList[i].innerText='Okkkk'
+        // // // }
+        // for (const el of pList) {
+        //     el.innerText='Okkkk'
+        // }
+        // console.log(pList); 
+        //------ querySelector
+        const inp1=document.querySelector('#num1')
+        const n1=parseFloat(inp1.value)
+        const inp2=document.querySelector('#num2')
+        const n2=parseFloat(inp2.value)
+        const s= n1+n2
+        // const resInp=document.querySelector('#res')
+        // resInp.value=s
+        document.querySelector('#res').value=s
+    </script>
+
+</body>
+</html>
