@@ -1,126 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<script>
-		function getSum() {
-            const inp1 = document.querySelector('#num1')
-            const n1 = parseFloat(inp1.value)
-            const inp2 = document.querySelector('#num2')
-            const n2 = parseFloat(inp2.value)
-            const s = n1 + n2
-            // const resInp=document.querySelector('#res')
-            // resInp.value=s
-            document.querySelector('#res').value = s
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .stopNum-block{
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+        }
+        .result-block{
+            max-width: 300px
+        }
+        .stopNum-block label{
+            margin-bottom: 10px;
+        } */
 
 
-        // setTimeout( ()=>{document.write('Hello')} ,1000)
-    </script>
+        .wrapper{
+            width: 250px;
+            height: 200px;
+            background-color: green;
+            text-align: center;
+        }
+        img{
+            width: 70px;
+        }
+    </style>
 </head>
 <body>
-	/ const myInterval = setInterval(() => {
-        //     document.write('Hello')
-        // }, 1000);
-        // setTimeout(() => {
-        //     clearInterval(myInterval)
-        // }, 5000);
-        function f() {
-            document.write('Hello')
-            setTimeout(() => {
-                f()
-            }, 1000);
-        }
+    <div class="wrapper">
+        <img src="https://www.швейные-машинки.com.ua/5103-max_default/-.jpg" alt="наперсток" class="thimble1" >
+        <img src="https://www.швейные-машинки.com.ua/5103-max_default/-.jpg" alt="наперсток" class="thimble2" >
+        <img src="https://www.швейные-машинки.com.ua/5103-max_default/-.jpg" alt="наперсток" class="thimble3" >
+    </div>
 
+    <script>
 
-		<label>
-			First number
-		   <input type="number" id="num1" value="11"/>
-		</label> <br>
-		<label>
-			Second number
-		   <input type="number" id="num2" value="22"/>
-		</label> <br>
-		<button id="myBtn">
-			Click
-		</button> <br>
-		<label>
-			Summ
-		   <input type="number" id="res" value=""/>
-		</label> <br>
-	<!-- <div>
-		<p class="info">11</p>
-		<p>22</p>
-		<p>33</p>
-		<p class="info">44</p>
-		<p>55</p>
-	</div> -->
-	<hr>
-
-	<label>
-        First number
-        <input type="number" id="num1" value="11" />
-    </label> <br>
-    <label>
-        Second number
-        <input type="number" id="num2" value="22" />
-    </label> <br>
-    <button id="myBtn" onclick="getSum()">
-        Add
-    </button> <br>
-    <label>
-        Summ
-        <input type="number" id="res" value="" />
-    </label> <br>
-	
-
-
-
-	<script>
-        //--------- Id
-        // const b1 = document.getElementById('myBtn')
-        // setTimeout(() => {
-        //     b1.innerText=' <strong> Ok </strong> '
-        //     // b1.innerHTML=' <strong> Ok </strong> '
-        // }, 1000);
-        //------------ class
-        // const pList=document.getElementsByClassName('info')
-        // // for (let i = 0; i < pList.length; i++) {           
-        // //     pList[i].innerText='Okkkk'
-        // // }
-        // for (const el of pList) {
-        //     el.innerText='Okkkk'
-        // }
-        //------------- TagName
-        // const pList=document.getElementsByTagName('p')
-        // // // for (let i = 0; i < pList.length; i++) {           
-        // // //     pList[i].innerText='Okkkk'
-        // // // }
-        // for (const el of pList) {
-        //     el.innerText='Okkkk'
-        // }
-        // console.log(pList); 
-        //--------------  querySelectorAll
-        // const pList=document.querySelectorAll('.info')
-        // // // for (let i = 0; i < pList.length; i++) {           
-        // // //     pList[i].innerText='Okkkk'
-        // // // }
-        // for (const el of pList) {
-        //     el.innerText='Okkkk'
-        // }
-        // console.log(pList); 
-        //------ querySelector
-        const inp1=document.querySelector('#num1')
-        const n1=parseFloat(inp1.value)
-        const inp2=document.querySelector('#num2')
-        const n2=parseFloat(inp2.value)
-        const s= n1+n2
-        // const resInp=document.querySelector('#res')
-        // resInp.value=s
-        document.querySelector('#res').value=s
     </script>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  <!-- <div class="stopNum-block">
+      <label>Зупинка 1: <input type="number" id="inp1" value="0"></label>
+      <label>Зупинка 2: <input type="number" id="inp2" value="0"></label>
+      <label>Зупинка 3: <input type="number" id="inp3" value="0"></label>
+  </div>
+  <div class="result-block">
+      <button onclick="getTotalPass()">Статистика</button>
+        <p>Загальна сума пасажирів: <span id="totalNum">0</span> пасажирів.</p>
+        <p>Максимальна кількість: <span id="maxNum">0</span> пасажирів.</p>
+  </div>
+
+  <script>
+      function getTotalPass(){
+          const firstStop = parseFloat(document.getElementById('inp1').value)
+          const secondStop = parseFloat(document.getElementById('inp2').value)
+          const thirdStop = parseFloat(document.getElementById('inp3').value)
+          const sum = firstStop + secondStop + thirdStop
+          console.log(sum)
+          document.getElementById('totalNum').innerText = sum
+          const max = Math.max(firstStop,secondStop,thirdStop)
+          document.getElementById('maxNum').innerText = max
+      }
+       -->
+  </script>
 </body>
 </html>

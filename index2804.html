@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+   <div id="container">
+       
+   </div>
+   <script>
+
+    let  products = [
+        {
+            title: 'rice',
+            price: 11,
+            amount: 111,
+        },
+        {
+            title: 'rice2',
+            price: 22,
+            amount: 222,
+        },
+        {
+            title: 'rice3',
+            price: 33,
+            amount: 333,
+        },
+        {
+            title: 'rice4',
+            price: 44,
+            amount: 444,
+        },
+    ]
+    /*
+    // Вибрати тіб які ціна яких є більшою за 25
+
+    let arr2 = products.filter((val,index,arr) => val.price > 25)
+    console.log(arr2);
+*/
+/*
+    // до всіх товарів додати 20 грн
+    products.forEach((val, index, arr)=> val.price +=20)
+  */
+  /*
+  //створити новий массив товарів у якому для всіх товарів додати 20 грн
+  let arr2 = products.map((val, index, arr) => {
+      return{
+          ...val,
+          price:val.price+20
+      }
+  })
+  console.log(products);
+  console.log(arr2);
+  */
+
+/*
+  class Rect{
+      // Що треба знати при створенні обєкта
+      constructor(a,b){
+          this.a=a
+          this.b=b
+      }
+      getS(){
+          return this.a * this.b
+      }
+      getP(){
+          return 2 * (this.a + this.b)
+      }
+      toString(){
+          return `RectL a=${this.a}, b=${this.b}`
+      }
+  }
+
+  let r1 = new Rect(2,3)
+  document.write('s='+r1.getS())
+
+  */
+
+  class Diapazon{
+      constructor(minValue, maxValue){
+        this.minV = minValue
+        this.maxV = maxValue
+      }
+      getRandomNumber (){
+          return this.minV + Math.Floor(Math.random() * this.maxV - this.minV + 1)
+      }
+  }
+    </script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 100px;
+        }
+        #container div{
+            width: 120px;
+            display: inline-block;
+        }
+    </style>
+    <script>
+        class PriceCalc{
+            constructor(title,price){
+                this.title=title
+                this.price=price
+                this.count=1
+                this.total=price
+            }
+            calcTotal(){
+                this.count=parseInt(this.countInp.value)
+                this.total=this.count*this.price
+                this.totalSpan.innerText=this.total
+            }
+            render(containerId){
+                const container=document.querySelector(`#${containerId}`)
+                const createEl=document.createElement.bind(document)
+                const div=createEl('div')
+                let divR=createEl('div')
+                div.appendChild(divR)
+                let spanT=createEl('span')
+                spanT.innerText=this.title
+                divR.appendChild(spanT)
+                spanT=createEl('span')
+                spanT.innerText=this.price
+                divR.appendChild(spanT)
+                div.appendChild(divR)
+                divR=createEl('div')
+                const label=createEl('label')
+                label.innerText='Кількість'
+                this.countInp=createEl('input')
+                this.countInp.setAttribute('type','number')
+                this.countInp.value=this.count
+                this.countInp.onchange=this.calcTotal.bind(this)
+                label.appendChild(this.countInp)
+                divR.appendChild(label)
+                div.appendChild(divR)
+                divR=createEl('div')
+                divR.innerText='Разом : '
+                this.totalSpan=createEl('span')
+                this.totalSpan.innerText=this.total
+                divR.appendChild(this.totalSpan)
+                div.appendChild(divR)
+                container.appendChild(div)
+            }
+        }
+        //---------------------------
+        class Baner {
+            constructor(linksData, pauseInterval) {
+                this.linksData = linksData
+                this.position = 0
+                this.pauseInterval=pauseInterval
+            }
+            setCurrentData() {
+                const el = this.linksData[this.position]
+                this.a.setAttribute('href', el.href)
+                this.img.setAttribute('src', el.src)
+                this.div.innerText = el.title
+            }
+            start(){
+                setInterval(()=>{
+                    this.position=(this.position+1)%this.linksData.length
+                    this.setCurrentData()
+                }, this.pauseInterval)
+            }
+            render(containerId) {
+                const container = document.getElementById(containerId)
+                this.a = document.createElement('a')
+                this.img = document.createElement('img')
+                this.a.appendChild(this.img)
+                this.div = document.createElement('div')
+                this.a.appendChild(this.div)
+                container.appendChild(this.a)
+                this.setCurrentData()
+                this.start()
+            }
+        }
+        //---------------------
+        class ProductRow{
+            constructor(title,price,linksData, pauseInterval){
+                this.priceCalc=new PriceCalc(title,price)
+                this.baner=new Baner(linksData, pauseInterval)
+            }
+            render(containerId){
+                this.priceCalc.render(containerId)
+                this.baner.render(containerId)
+            }
+        }
+        //--------------------
+        window.onload = function () {
+            const arr=[
+                {
+                    src:'https://m.dom-eda.com/uploads/images/catalog/item/0bc9aaa983/e9d04a14f0_1000.png',
+                    href:'https://www.google.com/search?q=%D0%BC%D0%B0%D0%BB%D0%B8%D0%BD%D0%B0&sxsrf=ALeKk02j4LQ2xW_C8uUhnEk464l0X3OtvA:1620234288946&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjYgPuJg7PwAhUIExoKHfT5AZkQ_AUoAXoECAEQAw&biw=1280&bih=578&dpr=1.5#imgrc=6nRenP-QJaVv3M',
+                    title:'ttt1'
+                },
+                {
+                    src:'https://www.gastronom.ru/binfiles/images/20151029/bddcbbce.jpg',
+                    href:'https://www.google.com/search?q=%D0%B1%D0%B0%D0%BD%D0%B0%D0%BD&tbm=isch&ved=2ahUKEwj0mfGKg7PwAhWF1-AKHdpKAUwQ2-cCegQIABAA&oq=%D0%B1%D0%B0%D0%BD%D0%B0%D0%BD&gs_lcp=CgNpbWcQAzIHCAAQsQMQQzIECAAQQzIECAAQQzIFCAAQsQMyBAgAEEMyBQgAELEDMgIIADICCAAyAggAMggIABCxAxCDAToECCMQJzoHCCMQ6gIQJzoGCAAQChABULbTAljW-AJgzfsCaAVwAHgCgAHyCogB6h-SAQ8zLjQuMC4xLjAuMS4xLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ7ABCsABAQ&sclient=img&ei=MtCSYPS4NYWvgwfalYXgBA&bih=578&biw=1280#imgrc=A6nqmiVQ7xEicM',
+                    title:'2222'
+                },
+                {
+                    src:'https://nebanan.com.ua/wp-content/uploads/2017/07/ananas-gold-e1602788345313.jpeg',
+                    href:'https://www.google.com/search?q=%D0%B0%D0%BD%D0%B0%D0%BD%D0%B0%D1%81&tbm=isch&ved=2ahUKEwjsrNyig7PwAhUKchQKHbcrCV8Q2-cCegQIABAA&oq=%D0%B0%D0%BD%D0%B0%D0%BD%D0%B0%D1%81&gs_lcp=CgNpbWcQAzIHCAAQsQMQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzICCAAyAggAMgIIADICCAAyAggAOgQIIxAnOgUIABCxAzoICAAQsQMQgwFQ--sBWJzzAWCA9QFoAHAAeACAAWaIAc8EkgEDMy4zmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=ZNCSYOzqNIrkUbfXpPgF&bih=578&biw=1280#imgrc=4NPkD2sdIWVPpM',
+                    title:'33333'
+                },
+            ]
+const r1=new ProductRow('Rice',37,arr,500)
+r1.render('container')
+            // const b1= new Baner(arr,1000)
+            // b1.render('container')
+            // const b2= new Baner(arr,800)
+            // b2.render('container')
+            // const pr1=new PriceCalc('Rice',37)
+            // pr1.render('container')
+        }
+    </script>
+</head>
+<body>
+    <div id="container">
+    </div>
+</body>
+</html>
